@@ -7,7 +7,7 @@ $calendar-day-bg-color: #eee;
 $calendar-day-hover-bg--color: #ffbfcb;
 $sell-size: 100px;
 $gap-size: 1px;
-$pading-hor: 10px;
+$pading: 10px;
 $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
 
 .calendar {
@@ -15,7 +15,7 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
   flex-wrap: wrap;
   gap: $gap-size;
   width: 7 * $sell-size + 6 * $gap-size;
-  padding: 0 $pading-hor;
+  padding: $pading;
 
   @for $i from 28 through 31 {
     &--month-length-#{$i} {
@@ -62,7 +62,7 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
 }
 
 @each $day, $dayValue in $days {
-  .start-day-#{$day} {
+  calendar__day--start-day-#{$day} {
     margin-left: $dayValue * ($sell-size + $gap-size);
   }
 }
