@@ -1,5 +1,9 @@
 body {
   margin: 0;
+
+  display: grid;
+  place-items: center;
+  height: 100vh;
 }
 
 $calendar-day-border-color: black;
@@ -7,7 +11,7 @@ $calendar-day-bg-color: #eee;
 $calendar-day-hover-bg--color: #ffbfcb;
 $sell-size: 100px;
 $gap-size: 1px;
-$pading: 10px;
+$cal-padding: 10px;
 $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
 
 .calendar {
@@ -15,12 +19,20 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
   flex-wrap: wrap;
   gap: $gap-size;
   width: 7 * $sell-size + 6 * $gap-size;
-  padding: $pading;
+  padding: $cal-padding;
+
+  @each $day, $dayValue in $days {
+    &--start-day-#{$day} {
+      margin-left: $dayValue * ($sell-size + $gap-size);
+    }
+  }
 
   @for $i from 28 through 31 {
     &--month-length-#{$i} {
-      .calendar__day:nth-child(n + #{$i + 1}) {
-        display: none;
+      &__day:nth-child(n + #{$i + 1}) {
+        &__day:first-child {
+          display: none;
+        }
       }
     }
   }
@@ -61,8 +73,3 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
   }
 }
 
-@each $day, $dayValue in $days {
-  calendar__day--start-day-#{$day} {
-    margin-left: $dayValue * ($sell-size + $gap-size);
-  }
-}
