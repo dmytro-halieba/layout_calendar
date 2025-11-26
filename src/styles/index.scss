@@ -23,7 +23,7 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
 
   @each $day, $dayValue in $days {
     &--start-day-#{$day} {
-      &__day:first-child {
+      .calendar__day:first-child {
         margin-left: $dayValue * ($cell-size + $gap-size);
       }
     }
@@ -31,7 +31,7 @@ $days: (mon 0, tue 1, wed 2, thu 3, fri 4, sat 5, sun 6);
 
   @for $i from 28 through 31 {
     &--month-length-#{$i} {
-      &__day:nth-child(n + #{$i + 1}) {
+      .calendar__day:nth-child(n + #{$i + 1}) {
           display: none;
       }
     }
